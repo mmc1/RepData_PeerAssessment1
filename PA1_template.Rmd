@@ -20,6 +20,8 @@ head(df)
 tail(df)
 summary(df)
 ```
+From the summary of the data frame, we see that there are `r sum(is.na(df$steps))` missing values out of `r nrow(df)` rows of data. We will deal with missing values in a later section below.
+
 
 ## What is mean total number of steps taken per day?
 The data give the number of steps recorded in each five minute interval of each date. There are a number of missing values, and some exploration shows that all the missing values are limited to 8 particular days which have no recorded number of steps at any time of those 8 days.

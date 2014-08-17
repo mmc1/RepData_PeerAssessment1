@@ -10,7 +10,7 @@ library(knitr)
 library(lattice)
 ```
 ## Loading and preprocessing the data
-The dataset is a comma delimited file found in "activity.zip". This archive file is unzipped and the contents are read into a data frame with column classes specified. The code below loads the data from the datafile into a dataframe, and then looks at the head, tail, and summary of the dataframe.
+The dataset is a comma delimited file found in "activity.zip". This archive file is unzipped and the contents are read into a data frame with column classes specified. The code below loads the data from the file into a data frame, and then looks at the head, tail, and summary of the data frame.
 
 ```r
 dzipfile <- "activity.zip"
@@ -59,7 +59,7 @@ summary(df)
 ##  Max.   :806.0                      Max.   :2355  
 ##  NA's   :2304
 ```
-Next, I wanted to calculate the the number of rows in the dataframe, the number of missing values in the dataframe, and the number of days with missing values, and look at how many missing values are found in each day's data. This is done below.
+Next, I wanted to calculate the the number of rows in the data frame, the number of missing values in the data frame, and the number of days with missing values, and look at how many missing values are found in each day's data. This is done below.
 
 ```r
 #Total number of rows

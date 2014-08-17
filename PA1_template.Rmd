@@ -9,7 +9,7 @@ library(knitr)
 library(lattice)
 ```
 ## Loading and preprocessing the data
-The dataset is a comma delimited file found in "activity.zip". This archive file is unzipped and the contents are read into a data frame with column classes specified.
+The dataset is a comma delimited file found in "activity.zip". This archive file is unzipped and the contents are read into a data frame with column classes specified. The code below loads the data from the datafile into a dataframe, and then looks at the head, tail, and summary of the dataframe.
 ```{r}
 dzipfile <- "activity.zip"
 unzip(dzipfile)
@@ -20,6 +20,7 @@ head(df)
 tail(df)
 summary(df)
 ```
+Next, I wanted to calculate the the number of rows in the dataframe, the number of missing values in the dataframe, and the number of days with missing values, and look at how many missing values are found in each day's data. This is done below.
 ```{r results='hide'}
 #Total number of rows
 nRowsInDF <- nrow(df)
@@ -32,7 +33,7 @@ nMissingDays <- sum(with(df, tapply(is.na(steps), date, sum))>0)
 with(df, tapply(is.na(steps), date, sum))
 ```
 ## What is mean total number of steps taken per day?
-The data give the number of steps recorded in each five minute interval of each date. From the summary of the data frame, we see that there are `r nNAvalues` missing values out of `r nRowsInDF` rows of data. Some exploration shows that all the missing values are limited to `r nMissingDays` particular days which have no recorded number of steps at any time of those `r nMissingDays` days.
+The data give the number of steps recorded in each five minute interval of each date. From the summary of the data frame, we see that there are `r nNAvalues` missing values out of `r nRowsInDF` rows of data. Some exploration (described in the prior section) shows that all the missing values are limited to `r nMissingDays` particular days which have no recorded number of steps at any time of those `r nMissingDays` days.
 
 First we are interested in the total number of steps per day. We calculate the sum by day, and plot a histogram of the number of steps per day. Then, we calculate the mean of the total number of steps per day, with the missing values removed. The median is also calculated for comparison to a later calculation. 
 ```{r}
@@ -82,6 +83,7 @@ stepsPerDayMod <- with(dfModified, tapply(steps, date, sum))
 hist(stepsPerDayMod, breaks=8, main="Mean number of steps per day, missing data input", xlab="Number of steps")
 rug(stepsPerDayMod)
 ```
+
 The median and mean of the modified dataset are calculated and compared against the median and mean of the original dataset. Notice that the mean values are unchanged by the modification for missing values, but the median has shifted to a slightly higher value.
 ```{r}
 summary(stepsPerDayMod)
